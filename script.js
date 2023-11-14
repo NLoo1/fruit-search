@@ -6,22 +6,43 @@ const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackb
 function search(str) {
 	let results = [];
 
-	// TODO
+	const capitalizeFirstLetter = ([first, ...rest]) => {
+		return first.toUpperCase() + rest.join('');
+	};
+
+	str = capitalizeFirstLetter(str);
+
+	// Populate results array with matches
+	for(let fr of fruit){
+		console.log("LOOP")
+		if(fr.includes(str)){
+			results.push(fr);
+		}
+	}
 
 	return results;
 }
 
 function searchHandler(e) {
 	// TODO
+	// Take the input and pass to search();
+	// search(str);
+
+	// Check if any value in fruit includes that input
+	// showSuggestions(results from search, inputVal)
 }
 
 function showSuggestions(results, inputVal) {
-
 	// TODO
+	// From searchHandler(), update suggestions based on matches
+	// If results is empty, change text to no results
 }
 
 function useSuggestion(e) {
 	// TODO
+	// If you click on a suggestion, the input text will take that value
+	// Once clicked, set the value of textbox to that suggestion 
+	// Clear list
 }
 
 input.addEventListener('keyup', searchHandler);
