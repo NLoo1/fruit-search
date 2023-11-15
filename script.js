@@ -23,10 +23,26 @@ function search(str) {
 	return results;
 }
 
+// Helper function
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function searchHandler(e) {
 	// TODO
 	// Take the input and pass to search();
 	// search(str);
+
+	let searchInput = capitalizeFirstLetter(input.innerText);
+	const results = search(searchInput);
+	
+	showSuggestions(results);
+
+// Example usage:
+let yourString = "hello world";
+let capitalizedString = capitalizeFirstLetter(yourString);
+console.log(capitalizedString); // Output: "Hello world"
+
 
 	// Check if any value in fruit includes that input
 	// showSuggestions(results from search, inputVal)
@@ -36,6 +52,16 @@ function showSuggestions(results, inputVal) {
 	// TODO
 	// From searchHandler(), update suggestions based on matches
 	// If results is empty, change text to no results
+
+	if(results.length == 0){
+		suggestions.innerText = "No results found."
+	} else{
+		for(let result of results){
+			const newSuggestion = document.createElement("li");
+			newSuggestion.innerText = result;
+			suggestions.appendChild(newSuggestion);
+		}
+	}
 }
 
 function useSuggestion(e) {
@@ -43,6 +69,13 @@ function useSuggestion(e) {
 	// If you click on a suggestion, the input text will take that value
 	// Once clicked, set the value of textbox to that suggestion 
 	// Clear list
+
+	if(e.target == "li"){
+
+	}
+	else{
+		console.log("bruh");
+	}
 }
 
 input.addEventListener('keyup', searchHandler);
