@@ -1,23 +1,44 @@
 * {
-  /* box-sizing: border-box; */
+  margin: 0 auto;
+  padding: 0;
 }
 
-:focus {
- /* TODO */
+body{
+  display: flex;
+  flex-direction: column;
 }
 
-body {
-  /* TODO */
+header{
+  text-align: center;
+  background-color: blue;
+  flex: 3;
 }
 
-input {
- /* TODO */
+header h1{
+  padding: 20px;
+  color: white;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 20px;
 }
+
+input:focus {
+ background-color: yellow;
+}
+
+.suggestions{
+  flex: 1;
+  background-color: gray;
+}
+
 
 .search-container {
  /* TODO */
+  background-color: red;
+  text-align: center;
+  padding: 10px;
+  flex: 1;
 }
-.search-container input,
+/* .search-container input,
 .search-container .suggestions {
   /* TODO */
 }
@@ -26,21 +47,17 @@ input {
 }
 .search-container .suggestions {
    /* TODO */
-}
+} */
 
 ul {
   /* TODO */
-}
-ul.has-suggestions {
-  /* TODO */
-}
-ul li {
-  /* TODO */
-}
-ul li:hover {
-  /* TODO */
+  background-color: whitesmoke;
 }
 
-input {
-   /* TODO */
+
+ul li:hover {
+  /* TODO */
+  border: 1px black solid;
+  outline: #4CAF50 solid 1px;
 }
+

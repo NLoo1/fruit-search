@@ -6,15 +6,12 @@ const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackb
 function search(str) {
 	let results = [];
 
-	const capitalizeFirstLetter = ([first, ...rest]) => {
-		return first.toUpperCase() + rest.join('');
-	};
 
 	str = capitalizeFirstLetter(str);
 
 	// Populate results array with matches
 	for(let fr of fruit){
-		console.log("LOOP")
+		// console.log("LOOP")
 		if(fr.includes(str)){
 			results.push(fr);
 		}
@@ -29,33 +26,31 @@ function capitalizeFirstLetter(string) {
 }
 
 function searchHandler(e) {
-	// TODO
 	// Take the input and pass to search();
-	// search(str);
 
-	let searchInput = capitalizeFirstLetter(input.innerText);
-	const results = search(searchInput);
-	
-	showSuggestions(results);
+	// Check if input actually has text
+	if(input.value){
+		let searchInput = capitalizeFirstLetter(input.value);
+		const results = search(searchInput);
 
-// Example usage:
-let yourString = "hello world";
-let capitalizedString = capitalizeFirstLetter(yourString);
-console.log(capitalizedString); // Output: "Hello world"
+		// Check if any value in fruit includes that input
+		// showSuggestions(results from search, inputVal)
+		showSuggestions(results, searchInput);
 
-
-	// Check if any value in fruit includes that input
-	// showSuggestions(results from search, inputVal)
+	}
+	else{
+		suggestions.innerHTML = "";
+	}
 }
 
 function showSuggestions(results, inputVal) {
-	// TODO
 	// From searchHandler(), update suggestions based on matches
 	// If results is empty, change text to no results
 
 	if(results.length == 0){
-		suggestions.innerText = "No results found."
+		suggestions.innerHTML = "No results found."
 	} else{
+		suggestions.innerHTML = "";
 		for(let result of results){
 			const newSuggestion = document.createElement("li");
 			newSuggestion.innerText = result;
@@ -65,16 +60,15 @@ function showSuggestions(results, inputVal) {
 }
 
 function useSuggestion(e) {
-	// TODO
 	// If you click on a suggestion, the input text will take that value
 	// Once clicked, set the value of textbox to that suggestion 
 	// Clear list
 
-	if(e.target == "li"){
-
-	}
-	else{
-		console.log("bruh");
+	console.log(e.target);
+	if(e.target.tagName == "LI"){
+		// console.log("YAY")
+		input.value = e.target.innerText;
+		suggestions.innerHTML = "";
 	}
 }
 
