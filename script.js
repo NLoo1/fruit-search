@@ -6,9 +6,6 @@ const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackb
 function search(str) {
 	let results = [];
 
-
-	str = capitalizeFirstLetter(str);
-
 	// Populate results array with matches
 	for(let fr of fruit){
 		// console.log("LOOP")
@@ -20,17 +17,12 @@ function search(str) {
 	return results;
 }
 
-// Helper function
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 function searchHandler(e) {
 	// Take the input and pass to search();
 
 	// Check if input actually has text
 	if(input.value){
-		let searchInput = capitalizeFirstLetter(input.value);
+		let searchInput = input.value;
 		const results = search(searchInput);
 
 		// Check if any value in fruit includes that input
@@ -66,7 +58,6 @@ function useSuggestion(e) {
 
 	console.log(e.target);
 	if(e.target.tagName == "LI"){
-		// console.log("YAY")
 		input.value = e.target.innerText;
 		suggestions.innerHTML = "";
 	}
