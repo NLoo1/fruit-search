@@ -5,11 +5,13 @@ const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackb
 
 function search(str) {
 	let results = [];
-
+	str = str.toLowerCase();
+	str = str.replace(/\s+$/, '');
+	str = str.replace(/^\s+/, '');
 	// Populate results array with matches
 	for(let fr of fruit){
 		// console.log("LOOP")
-		if(fr.includes(str)){
+		if(fr.toLowerCase().includes(str) && str !== ""){
 			results.push(fr);
 		}
 	}
@@ -56,7 +58,7 @@ function useSuggestion(e) {
 	// Once clicked, set the value of textbox to that suggestion 
 	// Clear list
 
-	console.log(e.target);
+	// console.log(e.target);
 	if(e.target.tagName == "LI"){
 		input.value = e.target.innerText;
 		suggestions.innerHTML = "";
